@@ -4,7 +4,7 @@
         strong.text-center {{title}}
         p.text-center {{descrip}}
         .text-center
-            .btn.btn-outline-primary {{btnText}}
+            a.btn.btn-outline-primary(:href="'#/instructores/'+title") {{btnText}}
 </template>
 <script>
 export default {

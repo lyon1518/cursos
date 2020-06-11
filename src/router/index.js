@@ -16,5 +16,10 @@ export default new Router({
       name: 'index',
       component: index
     },
+    {
+      path: '/:title/:author',
+      name: 'index',
+      component: index
+    },
   ]
 })

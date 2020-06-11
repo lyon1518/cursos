@@ -3,7 +3,7 @@
         .row
             .bg-dark.imgCurso(:class="'col-md-'+sizeImg" v-if="img == undefined")
             div(:class="'col-md-'+sizeImg" v-else)
-                img.w-100(:src="img")
+                img.w-100.h-100(:src="img")
             .p-4(:class="'col-md-'+sizeImg")
                 .row
                     .col-md-6

@@ -1,0 +1,5 @@
+// navlist
+{
+  "link":"cursos",
+  text:''
+}

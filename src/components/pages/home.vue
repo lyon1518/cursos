@@ -4,14 +4,14 @@
         h1.mt-4.text-center.text-primary Destacados
         .container.mb-4.mt-4.pb-4
             .row
-                .col-md-6(v-for="x in 2" :key="'destacados'+x")
-                    featured(sizeImg="6" :titleCard="'TITULO '+x" hors="18:00" descrip="Description de prueba para destacados" textBtn="Ver más" price="1000")
+                .col-md-6(v-for="(data,index) in dataApi" :key="'destacados'+index")
+                    featured(sizeImg="6" :titleCard="data.title" :hors="data.hours" :descrip="data.description" textBtn="Ver más" :price="data.price" :img="data.img")
         .container-fluid.sp.bg-gray.pt-4
             h1.mt-4.text-center.text-primary Nuestros cursos más populares
             .container.mb-4.mt-4
                 .row
-                    .col-md-3.mt-4(v-for="data in dataApi" :keys="'populares'+data.id")
-                        featured(sizeImg="12" :titleCard="data.first_name+' '+data.last_name" hors="18:00" :descrip="data.email" textBtn="Ver más" price="1000" :img="data.avatar")
+                    .col-md-3.mt-4(v-for="popul in popular" :keys="'populares'+popul.id" v-if="Object.keys(popular).length > 0")
+                        featured(sizeImg="12" :titleCard="popul.title" :hors="popul.hour" :descrip="popul.description" textBtn="Ver más" :price="popul.price" :img="popul.img")
 </template>
 <script>
 import banner from "../dasboard/banner";
@@ -24,16 +24,22 @@ export default {
     },
     data(){
         return{
-            dataApi:{}
+            dataApi:{},
+            popular:{}
         }
     },
     mounted(){
-        this.$http.get('api/users?page=2')
+        this.$http.get('/featured')
         .then((res)=>{
             setTimeout(() => {
-                console.log(res)
-                this.dataApi = res.data.data
-                console.log(this.dataApi)
+                this.dataApi = res.data.featured
+            }, 1000);
+        })
+        this.$http.get('/list/curses')
+        .then((res)=>{
+            setTimeout(() => {
+                this.popular = res.data.curses
+                console.log(this.popular)
             }, 1000);
         })
     }

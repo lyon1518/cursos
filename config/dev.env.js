@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_ROOT: '"https://reqres.in/"'
+  API_ROOT: '"http://02823.mocklab.io"'
 })
