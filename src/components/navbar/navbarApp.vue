@@ -10,7 +10,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item" v-for="list in dataNav.navlist">
+          <li class="nav-item" v-for="(list,index) in dataNav.navlist" :keys="'li'+index">
             <a class="nav-link" :href="list.link">{{list.text}}</a>
           </li>
         </ul>
@@ -22,7 +22,7 @@
                 {{dataNav.user.name}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" :href="item.link" v-for="item in dataNav.user.dropdown">{{item.text}}</a>
+                <a class="dropdown-item" :href="item.link" v-for="(item,index) in dataNav.user.dropdown" :keys="'a'+index">{{item.text}}</a>
                 <!-- <a class="dropdown-item" href="#">Cursos</a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Cerrar sesión</a>
